@@ -39,7 +39,7 @@
 <header>
  <h1><img src="./Public/Admin/images/admin_logo.png"/></h1>
  <ul class="rt_nav">
-  <li><a href="index.php?p=Admin&c=Admin&a=index" target="_blank" class="website_icon">后台首页</a></li>
+  <li><a href="http://www.mycodes.net" target="_blank" class="website_icon">站点首页</a></li>
   <li><a href="#" class="clear_icon">清除缓存</a></li>
   <li><a href="#" class="admin_icon">DeathGhost</a></li>
   <li><a href="#" class="set_icon">账号设置</a></li>
@@ -59,17 +59,10 @@
    </dl>
   </li>
   <li>
-  <dl>
-   <dt>部门管理</dt>
-   <dd><a href="index.php?p=Admin&c=Group&a=index">部门管理列表</a></dd>
-   <dd><a href="index.php?p=Admin&c=Group&a=add">添加新部门</a></dd>
-  </dl>
- </li>
-  <li>
    <dl>
-    <dt>会员管理</dt>
-    <dd><a href="index.php?p=Admin&c=Users&a=index">会员管理列表</a></dd>
-    <dd><a href="index.php?p=Admin&c=Users&a=add">添加新会员</a></dd>
+    <dt>部门管理</dt>
+    <dd><a href="index.php?p=Admin&c=Group&a=index">部门管理列表</a></dd>
+    <dd><a href="index.php?p=Admin&c=Group&a=add">添加新部门</a></dd>
    </dl>
   </li>
   <li>
@@ -108,59 +101,45 @@
 </aside>
 
 <section class="rt_wrap content mCustomScrollbar">
+
  <div class="rt_content">
-  <div class="page_title">
-   <h2 class="fl">员工管理列表</h2>
-   <a href="index.php?p=Admin&c=Admin&a=add" class="fr top_rt_btn add_icon">添加新员工</a>
-  </div>
 
-  <section class="mtb">
-   <form action="index.php?p=Admin&c=Admin&a=index" method="post">
-   <input type="text" class="textbox textbox_20" name="realname" placeholder="查询员工姓名"/>
-   <input type="text" class="textbox textbox_20" name="sex" placeholder="查询员工性别"/>
-   <input type="text" class="textbox textbox_20" name="telephone" placeholder="查询员工电话"/>
-   <input type="submit" value="查询" class="group_btn"/>
-   </form>
-  </section>
+      <div class="page_title">
+       <h2 class="fl">套餐详细信息</h2>
+       <a href="index.php?p=Admin&c=Plans&a=index" class="fr top_rt_btn money_icon">套餐管理列表</a>
+      </div>
 
-  <table class="table">
-   <tr>
-    <th>员工头像</th>
-    <th>员工编号</th>
-    <th>员工姓名</th>
-    <th>员工性别</th>
-    <th>联系电话</th>
-    <th>所属部门</th>
-    <th>操作</th>
-   </tr>
+      <form action="index.php?p=Admin&c=Plans&a=edit" method="post" enctype="multipart/form-data">
+      <ul class="ulColumn2">
+       <input type="hidden" name="id" value="<?=$plan['plan_id']?>" />
+       <li>
+        <span class="item_name" style="width:120px;">套餐名称：</span>
+        <input type="text" class="textbox textbox_225" name="name" placeholder="套餐名称" value="<?=$plan['name']?>"/>
+       </li>
 
-   <?php foreach($members as $members):?>
+       <li>
+        <span class="item_name" style="width:120px;">套餐描述：</span>
+        <textarea rows="10" cols="31" name="des" placeholder="请输入详细的套餐描述"><?=$plan['des']?></textarea>
+       </li>
 
-   <tr>
-    <td class="center"><img src="./Uploads/<?=$members['photo']?>"></td>
-    <td class="center"><?=$members['member_id']?></td>
-    <td class="center"><?=$members['realname']?></td>
-    <td class="center"><?=$members['sex']?></td>
-    <td class="center"><?=$members['telephone']?></td>
-    <td class="center" ><?=$members['group_name']?></td>
-    <td class="center">
-     <a href="index.php?p=Admin&c=Admin&a=edit&id=<?=$members['member_id']?>" title="修改员工信息" class="link_icon" target="_blank">&#118;</a>
-     <a href="index.php?p=Admin&c=Admin&a=delete&id=<?=$members['member_id']?>" title="删除该员工信息" class="link_icon">&#100;</a>
-    </td>
-   </tr>
+       <li>
+        <span class="item_name" style="width:120px;">套餐金额：</span>
+        <input type="text" class="textbox textbox_225" name="money" placeholder="套餐金额" value="<?=$plan['money']?>"/>
+       </li>
 
-   <?php endForeach;?>
+       <li>
+        <span class="item_name" style="width:120px;">套餐状态：</span>
+        <label class="single_selection"><input type="radio" name="status" value="1" <?=$plan['status'] == 1 ? "checked" : ""?>/>上线</label>
+        <label class="single_selection"><input type="radio" name="status" value="0" <?=$plan['status'] != 1 ? "checked" : ""?>/>下线</label>
+       </li>
 
-  </table>
-  <aside class="paging">
-   <a>第一页</a>
-   <a>1</a>
-   <a>2</a>
-   <a>3</a>
-   <a>…</a>
-   <a>1004</a>
-   <a>最后一页</a>
-  </aside>
+       <li>
+        <span class="item_name" style="width:120px;"></span>
+        <input type="submit" class="link_btn" value="保存/添加"/>
+       </li>
+
+      </ul>
+      </form >
  </div>
 </section>
 </body>

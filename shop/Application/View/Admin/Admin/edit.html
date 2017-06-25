@@ -67,13 +67,6 @@
   </li>
   <li>
    <dl>
-    <dt>会员管理</dt>
-    <dd><a href="index.php?p=Admin&c=Users&a=index">会员管理列表</a></dd>
-    <dd><a href="index.php?p=Admin&c=Users&a=add">添加新会员</a></dd>
-   </dl>
-  </li>
-  <li>
-   <dl>
     <dt>店铺活动管理</dt>
     <dd><a href="#">活动列表</a></dd>
     <dd><a href="#">添加活动</a></dd>
@@ -112,23 +105,24 @@
  <div class="rt_content">
 
       <div class="page_title">
-       <h2 class="fl">新员工详细信息</h2>
+       <h2 class="fl">员工详细信息</h2>
        <a href="index.php?p=Admin&c=Admin&a=index" class="fr top_rt_btn money_icon">员工管理列表</a>
       </div>
 
-      <form action="index.php?p=Admin&c=Admin&a=add" method="post" enctype="multipart/form-data">
+      <form action="index.php?p=Admin&c=Admin&a=edit" method="post" enctype="multipart/form-data">
       <ul class="ulColumn2">
+       <input type="hidden" name="id" value="<?=$member['member_id'];?>"/>
        <li>
         <span class="item_name" style="width:120px;">上传头像：</span>
         <label class="uploadImg">
          <input type="file" name="photo" />
-         <span>上传头像</span>
+         <span>更改头像[如果不更改请忽略]</span>
         </label>
        </li>
 
        <li>
         <span class="item_name" style="width:120px;">员工用户名：</span>
-        <input type="text" class="textbox textbox_225" name="username" placeholder="员工用户名"/>
+        <input type="text" class="textbox textbox_225" name="username" value="<?=$member['username'];?>"/>
        </li>
 
        <li>
@@ -138,29 +132,29 @@
 
        <li>
         <span class="item_name" style="width:120px;">是否设为管理员：</span>
-        <label class="single_selection"><input type="radio" name="is_admin" value="1"/>是</label>
-        <label class="single_selection"><input type="radio" name="is_admin" value="0"/>否</label>
+        <label class="single_selection"><input type="radio" name="is_admin" value="1" <?=$member['is_admin'] == 1 ? "checked" : ""?>/>是</label>
+        <label class="single_selection"><input type="radio" name="is_admin" value="0" <?=$member['is_admin'] != 1 ? "checked" : ""?>/>否</label>
        </li>
 
        <li>
         <span class="item_name" style="width:120px;">员工姓名：</span>
-        <input type="text" class="textbox textbox_225" name="realname" placeholder="员工姓名"/>
+        <input type="text" class="textbox textbox_225" name="realname" value="<?=$member['realname'];?>"/>
        </li>
        <li>
         <span class="item_name" style="width:120px;">员工性别：</span>
-        <label class="single_selection"><input type="radio" name="sex" value="男"/>男</label>
-        <label class="single_selection"><input type="radio" name="sex" value="女"/>女</label>
+        <label class="single_selection"><input type="radio" name="sex" value="男" <?=$member['sex'] == "男" ? "checked" : ""?>/>男</label>
+        <label class="single_selection"><input type="radio" name="sex" value="女" <?=$member['sex'] == "女" ? "checked" : ""?>/>女</label>
        </li>
        <li>
         <span class="item_name" style="width:120px;">联系方式：</span>
-        <input type="text" class="textbox textbox_225" name="telephone" placeholder="联系方式"/>
+        <input type="text" class="textbox textbox_225" name="telephone" value="<?=$member['telephone'];?>"/>
        </li>
 
        <li>
         <span class="item_name" style="width:120px;">所属部门：</span>
         <select class="select" name="group_id">
          <?php foreach($group as $group):?>
-         <option value="<?=$group['group_id']?>"><?=$group['group_name']?></option>
+         <option value="<?=$group['group_id']?>" <?=$group['group_id'] == $member['group_id'] ? "selected" : ""?>><?=$group['group_name']?></option>
          <?php endForeach;?>
         </select>
        </li>

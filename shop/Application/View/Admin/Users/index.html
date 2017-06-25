@@ -110,42 +110,48 @@
 <section class="rt_wrap content mCustomScrollbar">
  <div class="rt_content">
   <div class="page_title">
-   <h2 class="fl">员工管理列表</h2>
-   <a href="index.php?p=Admin&c=Admin&a=add" class="fr top_rt_btn add_icon">添加新员工</a>
+   <h2 class="fl">会员管理列表</h2>
+   <a href="index.php?p=Admin&c=Users&a=add" class="fr top_rt_btn add_icon">添加新员工</a>
   </div>
 
   <section class="mtb">
-   <form action="index.php?p=Admin&c=Admin&a=index" method="post">
-   <input type="text" class="textbox textbox_20" name="realname" placeholder="查询员工姓名"/>
-   <input type="text" class="textbox textbox_20" name="sex" placeholder="查询员工性别"/>
-   <input type="text" class="textbox textbox_20" name="telephone" placeholder="查询员工电话"/>
+   <form action="index.php?p=Admin&c=Users&a=index" method="post">
+   <input type="text" class="textbox textbox_20" name="realname" placeholder="查询会员姓名"/>
+   <input type="text" class="textbox textbox_20" name="sex" placeholder="查询会员性别"/>
+   <input type="text" class="textbox textbox_20" name="telephone" placeholder="查询会员电话"/>
    <input type="submit" value="查询" class="group_btn"/>
    </form>
   </section>
 
   <table class="table">
    <tr>
-    <th>员工头像</th>
-    <th>员工编号</th>
-    <th>员工姓名</th>
-    <th>员工性别</th>
-    <th>联系电话</th>
-    <th>所属部门</th>
+    <th>会员头像</th>
+    <th>会员编号</th>
+    <th>会员用户名</th>
+    <th>会员姓名</th>
+    <th>会员性别</th>
+    <th>联系方式</th>
+    <th>余额</th>
+    <th>Vip</th>
+    <th>备注</th>
     <th>操作</th>
    </tr>
 
-   <?php foreach($members as $members):?>
+   <?php foreach($users as $users):?>
 
    <tr>
-    <td class="center"><img src="./Uploads/<?=$members['photo']?>"></td>
-    <td class="center"><?=$members['member_id']?></td>
-    <td class="center"><?=$members['realname']?></td>
-    <td class="center"><?=$members['sex']?></td>
-    <td class="center"><?=$members['telephone']?></td>
-    <td class="center" ><?=$members['group_name']?></td>
+    <td class="center"><img src="./Uploads/<?=$users['photo']?>"></td>
+    <td class="center"><?=$users['user_id']?></td>
+    <td class="center"><?=$users['username']?></td>
+    <td class="center"><?=$users['realname']?></td>
+    <td class="center"><?=$users['sex']?></td>
+    <td class="center" ><?=$users['telephone']?></td>
+    <td class="center" ><?=$users['money']?></td>
+    <td class="center" ><?=$users['is_vip'] == 0 ? "普通会员" : "vip"?></td>
+    <td class="center" ><?=$users['remark']?></td>
     <td class="center">
-     <a href="index.php?p=Admin&c=Admin&a=edit&id=<?=$members['member_id']?>" title="修改员工信息" class="link_icon" target="_blank">&#118;</a>
-     <a href="index.php?p=Admin&c=Admin&a=delete&id=<?=$members['member_id']?>" title="删除该员工信息" class="link_icon">&#100;</a>
+     <a href="index.php?p=Admin&c=Users&a=edit&id=<?=$users['user_id']?>" title="修改该会员信息" class="link_icon" target="_blank">&#118;</a>
+     <a href="index.php?p=Admin&c=Users&a=delete&id=<?=$users['user_id']?>" title="删除该会员信息" class="link_icon">&#100;</a>
     </td>
    </tr>
 
