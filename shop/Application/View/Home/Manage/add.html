@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>后台管理系统</title>
+<meta name="author" content="DeathGhost" />
+<link rel="stylesheet" type="text/css" href="./Public/Admin/css/style.css">
+<!--[if lt IE 9]>
+<script src="./Public/Admin/js/html5.js"></script>
+<![endif]-->
+<script src="./Public/Admin/js/jquery.js"></script>
+<script src="./Public/Admin/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script>
+
+	(function($){
+		$(window).load(function(){
+			
+			$("a[rel='load-content']").click(function(e){
+				e.preventDefault();
+				var url=$(this).attr("href");
+				$.get(url,function(data){
+					$(".content .mCSB_container").append(data); //load new content inside .mCSB_container
+					//scroll-to appended content 
+					$(".content").mCustomScrollbar("scrollTo","h2:last");
+				});
+			});
+			
+			$(".content").delegate("a[href='top']","click",function(e){
+				e.preventDefault();
+				$(".content").mCustomScrollbar("scrollTo",$(this).attr("href"));
+			});
+			
+		});
+	})(jQuery);
+</script>
+</head>
+<body>
+<!--header-->
+<header>
+ <h1><img src="./Public/Admin/images/698.png"/></h1>
+ <ul class="rt_nav">
+  <li><a href="index.php?p=Home&c=Index&a=index" target="_blank" class="website_icon">店铺首页</a></li>
+  <li><a href="index.php?p=Home&c=Manage&a=manage" class="set_icon">会员操作</a></li>
+  <li><a href="index.php?p=Home&c=Login&a=logout" class="quit_icon">安全退出</a></li>
+ </ul>
+</header>
+<!--aside nav-->
+<!--aside nav-->
+<aside class="lt_aside_nav content mCustomScrollbar">
+ <ul>
+  <li>
+   <dl>
+    <!--当前链接则添加class:active-->
+    <dd><a href="index.php?p=Home&c=Manage&a=manage">会员操作</a></dd>
+    <dd><a href="index.php?p=Home&c=Manage&a=order">我的预约</a></dd>
+    <dd><a href="index.php?p=Home&c=Ranking&a=index">充值消费排行榜</a></dd>
+    <dd><a href="index.php?p=Home&c=Ranking&a=indexWaiter">服务之星排行榜</a></dd>
+   </dl>
+  </li>
+
+  </li>
+  <li>
+   <p class="btm_infor">© DeathGhost.cn 版权所有</p>
+  </li>
+ </ul>
+</aside>
+
+<section class="rt_wrap content mCustomScrollbar">
+
+ <div class="rt_content">
+
+      <div class="page_title">
+       <h2 class="fl">预约美发</h2>
+       <a href="index.php?p=Home&c=Manage&a=manage" class="fr top_rt_btn money_icon">会员资料</a>
+      </div>
+
+      <form action="index.php?p=Home&c=Manage&a=add" method="post" enctype="multipart/form-data">
+      <ul class="ulColumn2">
+       <li>
+        <span class="item_name" style="width:120px;">会员编号：</span>
+        <input type="text" class="textbox textbox_225" name="user_id" value="<?=$user['user_id']?>" readonly="readonly"/>
+       </li>
+
+       <li>
+        <span class="item_name" style="width:120px;">会员账户：</span>
+        <input type="text" class="textbox textbox_225" name="username" value="<?=$user['username'];?>" readonly="readonly"/>
+       </li>
+
+       <li>
+        <span class="item_name" style="width:120px;">预约电话：</span>
+        <input type="text" class="textbox textbox_225" name="phone" placeholder="预约电话"/>
+       </li>
+
+       <li>
+        <span class="item_name" style="width:120px;">顾客姓名：</span>
+        <input type="text" class="textbox textbox_225" name="user_realname" placeholder="顾客姓名"/>
+       </li>
+
+       <li>
+       <span class="item_name" style="width:120px;">预约美发师：</span>
+       <select class="select" name="member_id">
+        <?php foreach($member as $member):?>
+        <option value="<?=$member['member_id']?>"><?=$member['realname']?></option>
+        <?php endForeach;?>
+       </select>
+      </li>
+
+       <li>
+        <span class="item_name" style="width:120px;">预约备注：</span>
+        <textarea rows="10" cols="29" name="content" class="textarea" placeholder="预约备注"></textarea>
+       </li>
+
+       <li>
+        <span class="item_name" style="width:120px;">预约时间：</span>
+        <input type="date" class="textbox textbox_225" name="date" placeholder="预约时间"/>
+       </li>
+
+
+       <li>
+        <span class="item_name" style="width:120px;"></span>
+        <input type="submit" class="link_btn" value="保存/添加"/>
+       </li>
+
+      </ul>
+      </form >
+ </div>
+</section>
+</body>
+</html>

@@ -4,11 +4,18 @@ class GroupModel extends Model
 {
     //查询所有部门信息
     public function index(){
+        $page = empty( $_GET['page'] ) ? 1 : $_GET['page'];//传入页码
+        //获取总条数
+        $c_sql = "select count(*) from groups";
+        $count = $this->db->fetchColumn( $c_sql );
+        //每页显示多少条
+        $pageSize = 2;
+        $start = ($page - 1) * $pageSize;//开始显示的条数
         //准备sql
-        $sql = "select * from groups";
+        $sql = "select * from groups limit $start,$pageSize";
         //执行sql
         $rows = $this -> db -> fetchAll($sql);
-        return $rows;
+        return  [ 'rows' => $rows, 'page' => $page, 'count' => $count, 'pageSize' => $pageSize ];
     }
 
     //添加部门信息
@@ -49,6 +56,15 @@ class GroupModel extends Model
             $this -> db -> query($sql);
             return true;
         }
+    }
+
+    //部门信息分配
+    public function groupGet(){
+        //准备sql
+        $sql = "select * from groups";
+        //执行sql
+        $rows = $this -> db -> fetchAll($sql);
+        return $rows;
     }
 
 }

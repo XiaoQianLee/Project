@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>Hair Salon</title>
+	<link rel="stylesheet" href="./Public/Home/css/style.css" type="text/css" charset="utf-8" />
+	
+</head>
+
+<body>
+
+<div id="wrapper">
+	<h1><span class="hone"><em>S</em>tyle</span>
+	    <span class="htwo">HAIR SALON</span>
+	    <span class="hthree">Create Your Style With US</span></h1>
+	<div id="head-1"></div>
+	<div id="head-2"></div>
+	<div id="nav">
+		<ul>
+		  <li><a href="index.php?p=Home&c=Login&a=login">会员登录</a></li>
+		  <li><a href="index.php?p=Admin&c=Login&a=login">管理员登录</a></li>
+		  <li><a href="#">排行榜</a></li>
+			<li><a href="#">造型画廊</a></li>
+		  <li class="last"><a href="#">关于我们</a></li>
+		</ul>
+	</div>
+	<div id="body-left">
+		<h2><em>M</em>odelling</h2>
+		<div id="gallery">
+			<div class="gal" id="gzero"><a href="#"><img src="./Public/Home/images/pic_1.jpg" width="221" height="163" alt="Pic 1" /></a></div>
+			<div class="gal" id="gone"><a href="#"><img src="./Public/Home/images/pic_2.jpg" width="57" height="41" alt="Pic 2" /></a></div>
+			<div class="gal" id="gtwo"><a href="#"><img src="./Public/Home/images/pic_3.jpg" width="57" height="41" alt="Pic 3" /></a></div>
+			<div class="gal" id="gthree"><a href="#"><img src="./Public/Home/images/pic_4.jpg" width="57" height="41" alt="Pic 4" /></a></div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div id="body-right">
+		<h2><em>A</em>ctivity</h2>
+		<?php foreach($article as $article):?>
+		<p><h5><a href="index.php?p=Home&c=Index&a=article&id=<?=$article['article_id']?>"><?=$article['title']?></a></h5>&ensp;活动时间：<?=date('Y-m-d H:i:s',$article['start'])?>&ensp;<?=date('Y-m-d H:i:s',$article['end'])?></p>
+		<?php endForeach;?>
+  </div>
+	<div class="clear spacer"></div>
+	<div id="footer">
+		&copy; 2007 Hair salon. collect from <a href="http://www.cssmoban.com/" title="模板之家">模板之家</a>
+	</div>
+</div>
+
+</body>
+</html>

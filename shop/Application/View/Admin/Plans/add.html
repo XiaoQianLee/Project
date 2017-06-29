@@ -39,10 +39,8 @@
 <header>
  <h1><img src="./Public/Admin/images/admin_logo.png"/></h1>
  <ul class="rt_nav">
-  <li><a href="http://www.mycodes.net" target="_blank" class="website_icon">站点首页</a></li>
-  <li><a href="#" class="clear_icon">清除缓存</a></li>
-  <li><a href="#" class="admin_icon">DeathGhost</a></li>
-  <li><a href="#" class="set_icon">账号设置</a></li>
+  <li><a href="index.php?p=Home&c=Index&a=index" target="_blank" class="website_icon">网站首页</a></li>
+  <li><a href="index.php?p=Admin&c=Ranking&a=index" target="_blank" class="website_icon">店铺排行</a></li>
   <li><a href="index.php?p=Admin&c=Login&a=logout" class="quit_icon">安全退出</a></li>
  </ul>
 </header>
@@ -52,9 +50,14 @@
  <ul>
   <li>
    <dl>
+    <dt><a href="index.php?p=Admin&c=Ranking&a=index">充值消费排行榜</a></dt>
+    <dt><a href="index.php?p=Admin&c=Ranking&a=indexWaiter">服务之星排行榜</a></dt>
+   </dl>
+  </li>
+  <li>
+   <dl>
     <dt>员工管理</dt>
-    <!--当前链接则添加class:active-->
-    <dd><a href="index.php?p=Admin&c=Admin&a=index" class="active">员工管理列表</a></dd>
+    <dd><a href="index.php?p=Admin&c=Admin&a=index" >员工管理列表</a></dd>
     <dd><a href="index.php?p=Admin&c=Admin&a=add">添加新员工</a></dd>
    </dl>
   </li>
@@ -67,31 +70,22 @@
   </li>
   <li>
    <dl>
-    <dt>店铺活动管理</dt>
-    <dd><a href="#">活动列表</a></dd>
-    <dd><a href="#">添加活动</a></dd>
+    <dt>会员管理</dt>
+    <dd><a href="index.php?p=Admin&c=Users&a=index">会员管理列表</a></dd>
+    <dd><a href="index.php?p=Admin&c=Users&a=add">添加新会员</a></dd>
+    <dd><a href="index.php?p=Admin&c=Order&a=index">顾客预约查询</a></dd>
+    <dd><a href="index.php?p=Admin&c=Users&a=record">交易记录查询</a></dd>
+    <dd><a href="index.php?p=Admin&c=Voucher&a=index">代金券查询列表</a></dd>
+    <dd><a href="index.php?p=Admin&c=Voucher&a=add">发放代金券</a></dd>
    </dl>
   </li>
   <li>
    <dl>
-    <dt>美发套餐管理</dt>
+    <dt>店铺活动管理</dt>
+    <dd><a href="index.php?p=Admin&c=Article&a=index">活动列表</a></dd>
+    <dd><a href="index.php?p=Admin&c=Article&a=add">添加活动</a></dd>
     <dd><a href="index.php?p=Admin&c=Plans&a=index">套餐列表</a></dd>
     <dd><a href="index.php?p=Admin&c=Plans&a=add">添加套餐</a></dd>
-   </dl>
-  </li>
-  <li>
-   <dl>
-    <dt>排行榜</dt>
-    <dd><a href="#">充值排行榜</a></dd>
-    <dd><a href="#">消费排行榜</a></dd>
-    <dd><a href="#">服务顾客排行榜</a></dd>
-   </dl>
-  </li>
-  <li>
-   <dl>
-    <dt>代金券</dt>
-    <dd><a href="#">代金券查询列表</a></dd>
-    <dd><a href="#">发放代金券</a></dd>
    </dl>
   </li>
   <li>
@@ -119,7 +113,7 @@
 
        <li>
         <span class="item_name" style="width:120px;">套餐描述：</span>
-        <textarea rows="10" cols="31" name="des" placeholder="请输入详细的套餐描述"></textarea>
+        <textarea rows="10" cols="29" name="des" class="textarea" placeholder="请输入详细的套餐描述"></textarea>
        </li>
 
        <li>

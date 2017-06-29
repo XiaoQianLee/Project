@@ -8,7 +8,7 @@
  */
 class AdminModel extends Model
 {
-    //验证登录信息
+    //验证后台登录信息
     public function check($username,$password){
         //将用户输入的密码加密
         $password_in = md5($password);
@@ -28,14 +28,25 @@ class AdminModel extends Model
     //查询所有员工信息
     public function MembersGet($condition = []){
         //准备sql
+        $page = empty( $_GET['page'] ) ? 1 : $_GET['page'];//传入页码
+
         $where = "";//准备where条件
         if(!empty($condition)){
-            $where = " where ".implode(" and ",$condition);
+            $where = " where ".$condition;
         }
-        $sql = "select * from members left JOIN groups on members.group_id = groups.group_id ".$where;
+        //获取总条数
+        $c_sql = "select count(*) from members " . $where;
+        $count = $this->db->fetchColumn( $c_sql );
+        //每页显示多少条
+        $pageSize = 2;
+        $start = ($page - 1) * $pageSize;//开始显示的条数
+
+        $sql = "SELECT * FROM members LEFT JOIN `groups` on members.group_id = `groups`.group_id " . $where . " limit $start,$pageSize";
         //执行sql
         $rows = $this -> db -> fetchAll($sql);
-        return $rows;
+
+        return  [ 'rows' => $rows, 'page' => $page, 'count' => $count, 'pageSize' => $pageSize ];
+
     }
 
     //添加员工信息
@@ -74,7 +85,25 @@ class AdminModel extends Model
 
     //删除员工信息
     public function delete($id){
-        
+        //查询员工是否有服务记录
+        $sql = "select count(*) from histories where member_id={$id}";
+        $row = $this -> db -> fetchColumn($sql);
+        if($row > 0){
+            $this -> error = "该员工有服务记录，不能被删除";
+            return false;
+        }else{
+            $sqlc = "delete from users where user_id={$id}";
+            $this -> db -> query($sqlc);
+        }
     }
 
+    //预约时查询员工
+    public function memberGet(){
+        //准备sql
+        $sql = "select * from members";
+        //执行sql
+        $rows = $this -> db -> fetchAll($sql);
+        return $rows;
+
+    }
 }

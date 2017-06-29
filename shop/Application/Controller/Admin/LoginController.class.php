@@ -31,7 +31,7 @@ class LoginController extends Controller
             $_SESSION['member_info'] = $result;
         }
         //显示页面
-        $this -> redirect("index.php?p=Admin&c=Admin&a=index");
+        $this -> redirect("index.php?p=Admin&c=Ranking&a=indexWaiter");
     }
 
     //退出登录功能
@@ -42,7 +42,7 @@ class LoginController extends Controller
             @session_start();//开启session
             unset($_SESSION['member_info']);
         //显示页面
-        $this->redirect('index.php?p=Admin&c=Login&a=login',"退出登录成功！",3);
+        $this->redirect('index.php?p=Home&c=Index&a=index',"退出登录成功！",2);
     }
 
 }

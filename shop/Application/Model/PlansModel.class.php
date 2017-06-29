@@ -12,11 +12,18 @@ class PlansModel extends Model
 
     //查询所有套餐数据
     public function index(){
+        $page = empty( $_GET['page'] ) ? 1 : $_GET['page'];//传入页码
+        //获取总条数
+        $c_sql = "select count(*) from plans";
+        $count = $this->db->fetchColumn( $c_sql );
+        //每页显示多少条
+        $pageSize = 2;
+        $start = ($page - 1) * $pageSize;//开始显示的条数
         //准备sql
-        $sql = "select * from plans";
+        $sql = "select * from plans limit $start,$pageSize";
         //执行sql
         $rows = $this -> db -> fetchAll($sql);
-        return $rows;
+        return  [ 'rows' => $rows, 'page' => $page, 'count' => $count, 'pageSize' => $pageSize ];
     }
 
     //查询编辑的套餐数据进行回显
@@ -42,5 +49,14 @@ class PlansModel extends Model
         $sql = "delete from plans where plan_id={$id}";
         //执行sql
         $this -> db -> query($sql);
+    }
+
+    //回显套餐信息
+    public function planGet(){
+        //准备sql
+        $sql = "select * from plans";
+        //执行sql
+        $rows = $this -> db -> fetchAll($sql);
+        return $rows;
     }
 }

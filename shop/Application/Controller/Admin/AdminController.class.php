@@ -19,17 +19,23 @@ class AdminController extends PlatformController
             if(!empty($_POST['telephone'])){
                 $condition[] = "telephone like '%{$_POST['telephone']}%'";
             }
-        //处理数据
-            //调用模型查询部门信息
-            $groupModel = new GroupModel();
-            $group = $groupModel -> index();
-            //分配数据到页面
-            $this -> assign('group',$group);
+            //处理数据
             //调用模型查询所有员工信息
             $adminModel = new AdminModel();
-            $members = $adminModel -> MembersGet($condition);
+            if($_SERVER['REQUEST_METHOD']=="POST"){
+            $cond=implode(" and ",$condition);
+            }else{
+                $cond=isset($_GET['cond'])?$_GET['cond']:"";
+            }
+            $members = $adminModel -> MembersGet($cond);
             //分配数据到页面
-            $this -> assign('members',$members);
+            $this -> assign('members',$members['rows']);
+            //分页
+            $cond=urlencode($cond);
+            $page = new Page($members['count'], $members['pageSize'], $members['page'], "?p=Admin&c=Admin&a=index&page={page}&cond={$cond}", 3);
+
+        $page = $page->myde_write();
+        $this->assign('page',$page);
         //显示页面
         $this -> display('index');
     }
@@ -43,7 +49,7 @@ class AdminController extends PlatformController
             //处理数据
                 //调用模型查询部门信息
                 $groupModel = new GroupModel();
-                $group = $groupModel -> index();
+                $group = $groupModel -> groupGet();
                 //分配数据到页面
                 $this -> assign('group',$group);
             //显示页面
@@ -145,6 +151,9 @@ class AdminController extends PlatformController
         //处理数据
         $adminModel = new AdminModel();
         $result = $adminModel -> delete($id);
+        if($result === false){
+            $this -> redirect("index.php?p=Admin&c=Admin&a=index","删除员工信息失败!".$adminModel->getError(),10);
+        }
         //显示页面
         $this -> redirect("index.php?p=Admin&c=Admin&a=index","删除员工信息成功",1);
     }

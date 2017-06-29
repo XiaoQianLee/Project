@@ -9,7 +9,11 @@ class PlansController extends PlatformController
         $plansModel = new PlansModel();
         $results = $plansModel -> index();
         //分配数据到页面
-        $this -> assign('plans',$results);
+        $this -> assign('plans',$results['rows']);
+        //分页
+        $page = new Page($results['count'], $results['pageSize'], $results['page'], "?p=Admin&c=Plans&a=index&page={page}", 3);
+        $page = $page->myde_write();
+        $this->assign('page',$page);
         //显示页面
         $this ->display('index');
     }
@@ -73,4 +77,6 @@ class PlansController extends PlatformController
         //显示页面
         $this -> redirect("index.php?p=Admin&c=Plans&a=index","删除套餐成功，1秒后跳转",1);
     }
+
+
 }

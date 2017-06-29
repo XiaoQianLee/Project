@@ -9,7 +9,11 @@ class GroupController extends PlatformController
         $groupModel = new GroupModel();
         $group = $groupModel -> index();
         //分配数据到页面
-        $this -> assign('group',$group);
+        $this -> assign('group',$group['rows']);
+        //分页
+        $page = new Page($group['count'], $group['pageSize'], $group['page'], "?p=Admin&c=Group&a=index&page={page}", 3);
+        $page = $page->myde_write();
+        $this->assign('page',$page);
         //显示页面
         $this->display('index');
     }

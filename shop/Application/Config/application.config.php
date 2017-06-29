@@ -7,8 +7,8 @@ return array(
         'host' => '127.0.0.1',
     ),
     'app' => array(
-        'default_platform' => 'Admin',
-        'default_controller' => 'Admin',
+        'default_platform' => 'Home',
+        'default_controller' => 'Index',
         'default_action' => 'index'
     )
 );

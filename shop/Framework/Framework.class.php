@@ -81,6 +81,7 @@ class Framework
         //类和类文件的映射(每个规律类和目录的映射)
         $GLOBALS['map'] = array(
             'DB'=>TOOLS_PATH.'DB.class.php',
+            'Page'=>TOOLS_PATH.'Page.class.php',
             'Model'=>FRAM_PATH.'Model.class.php',
             'Controller'=>FRAM_PATH.'Controller.class.php'
         );
