@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表详情</title>
+</head>
+<body>
+<h2>用户列表详情</h2>
+<h5><a href="www.lxq.com/StAdmin/StUsers/Stadd/index.html">添加用户</a></h5>
+<table border="1">
+    <tr>
+        <th>用户编号</th>
+        <th>用户账号</th>
+        <th>用户姓名</th>
+        <th>用户性别</th>
+        <th>联系方式</th>
+        <th>操作</th>
+    </tr>
+    <?php foreach($users as $users):?>
+    <tr>
+        <td><?=$users['user_id']?></td>
+        <td><?=$users['username']?></td>
+        <td><?=$users['realname']?></td>
+        <td><?=$users['sex']?></td>
+        <td><?=$users['telephone']?></td>
+        <td><a href="index.php?p=Admin&c=Users&a=edit&id=<?=$users['user_id']?>">编辑/修改</a>&ensp;<a href="index.php?p=Admin&c=Users&a=delete&id=<?=$users['user_id']?>">删除</a></td>
+    </tr>
+    <?php endForeach;?>
+</table>
+</body>
+</html>

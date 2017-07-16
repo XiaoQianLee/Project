@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>运动员信息</h2>
+<table border="1">
+    <tr>
+        <th class="center">运动员姓名</th>
+        <th class="center">运动员年龄</th>
+        <th class="center">运动员性别</th>
+        <th class="center">参与场次</th>
+        <th class="center">查看比赛</th>
+    </tr>
+    <tr>
+        <th><?=$play['name']?></th>
+        <th><?=$play['age']?></th>
+        <th><?=$play['sex']?></th>
+        <th><?=$play['screenings']?></th>
+        <th><a href="index.php?p=Admin&c=Mysql&a=studentMatch&id=<?=$play['id']?>">查看参与比赛</a></th>
+    </tr>
+</table>
+
+</body>
+</html>

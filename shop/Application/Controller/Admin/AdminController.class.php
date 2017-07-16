@@ -152,7 +152,7 @@ class AdminController extends PlatformController
         $adminModel = new AdminModel();
         $result = $adminModel -> delete($id);
         if($result === false){
-            $this -> redirect("index.php?p=Admin&c=Admin&a=index","删除员工信息失败!".$adminModel->getError(),10);
+            $this -> redirect("index.php?p=Admin&c=Admin&a=index","删除员工信息失败!".$adminModel->getError(),2);
         }
         //显示页面
         $this -> redirect("index.php?p=Admin&c=Admin&a=index","删除员工信息成功",1);

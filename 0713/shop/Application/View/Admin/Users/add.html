@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加新用户</title>
+</head>
+<body>
+<h2>添加新用户</h2>
+<form action="index.php?p=Admin&c=Users&a=add" method="post">
+    用户账号：<input type="text" name="username"/><br/>
+    用户密码：<input type="password" name="password" /><br/>
+    用户姓名：<input type="text" name="realname"/><br/>
+    用户性别：<input type="radio" name="sex" value="男" />男
+            <input type="radio" name="sex" value="女" />女<br/>
+    联系方式：<input type="tel" name="telephone" /><br/>
+    <input type="submit" value="提交/保存"/>
+</form>
+</body>
+</html>

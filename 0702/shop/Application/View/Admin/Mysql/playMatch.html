@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>运动员信息</h2>
+<table border="1">
+    <tr>
+        <th class="center">比赛编号</th>
+        <th class="center">主队</th>
+        <th class="center">比分</th>
+        <th class="center">客分</th>
+        <th class="center">比赛时间</th>
+    </tr>
+    <?php foreach($play as $play):?>
+    <tr>
+
+        <th><?=$play['id']?></th>
+        <th><?=$play['hostTeam']?></th>
+        <th><?=$play['result']?></th>
+        <th><?=$play['guestTeam']?></th>
+        <th><?=$play['time']?></th>
+    </tr>
+    <?php endForeach;?>
+</table>
+
+</body>
+</html>

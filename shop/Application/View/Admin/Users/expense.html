@@ -113,11 +113,15 @@
 
        <li>
         <span class="item_name" style="width:120px;">服务员工：</span>
+
         <select class="select" name="member_id">
+
          <?php foreach($member as $member):?>
-         <option value="<?=$member['member_id']?>"><?=$member['realname']?></option>
+         <option value="<?=$member['member_id']?>"> <?=$member['realname']?> </option>
          <?php endForeach;?>
+
         </select>
+
        </li>
 
        <li>

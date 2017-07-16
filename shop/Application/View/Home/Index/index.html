@@ -40,7 +40,7 @@
 	<div id="body-right">
 		<h2><em>A</em>ctivity</h2>
 		<?php foreach($article as $article):?>
-		<p><h5><a href="index.php?p=Home&c=Index&a=article&id=<?=$article['article_id']?>"><?=$article['title']?></a></h5>&ensp;活动时间：<?=date('Y-m-d H:i:s',$article['start'])?>&ensp;<?=date('Y-m-d H:i:s',$article['end'])?></p>
+		<p><h5><a href="index.php?p=Home&c=Index&a=article&id=<?=$article['article_id']?>"><?=$article['title']?></a></h5>&ensp;活动时间：<?=date('Y-m-d',$article['start'])?>&ensp;--&ensp;<?=date('Y-m-d',$article['end'])?></p>
 		<?php endForeach;?>
   </div>
 	<div class="clear spacer"></div>

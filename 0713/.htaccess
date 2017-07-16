@@ -1,0 +1,21 @@
+#开启rewrite
+RewriteEngine On
+#判定文件是否存在
+RewriteCond %{REQUEST_FILENAME} -!f
+#判定文件夹是否存在
+RewriteCond %{REQUEST_FILENAME} -!d
+
+#定义重写规则
+RewriteRule St(.+)\/St(.+)\/St(.+)\/(.+)\.html$ $5\.php\?p=$1&c=$2&a=$3&id=$4
+
+
+
+#判定本站点域名
+#RewriteCond  %{HTTP_REFERER}!www.lxq.com
+#防止其他网站盗用图片
+#RewriteRule .+\.(jpg|png|gif)$ images/101608av7vaupmqmjvvmev.png
+
+
+
+
+

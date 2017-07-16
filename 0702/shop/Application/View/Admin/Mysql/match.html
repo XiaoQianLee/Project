@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>比赛列表</h2>
+<table border="1">
+    <tr>
+        <th class="center">比赛编号</th>
+        <th class="center">主队</th>
+        <th class="center">比分</th>
+        <th class="center">客分</th>
+        <th class="center">比赛时间</th>
+    </tr>
+    <?php foreach($match as $match):?>
+    <tr>
+
+        <th><?=$match['id']?></th>
+        <th><a href="index.php?p=Admin&c=Mysql&a=player&id=<?=$match['team1']?>"><?=$match['hostTeam']?></a></th>
+        <th><?=$match['result']?></th>
+        <th><a href="index.php?p=Admin&c=Mysql&a=player&id=<?=$match['team2']?>"><?=$match['guestTeam']?></a></th>
+        <th><?=$match['time']?></th>
+
+    </tr>
+    <?php endForeach;?>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <script type="text/javascript">
+        //声明这个检查函数
+        function  checkform(){
+            //取出Email中输入的值
+            var val1=document.getElementById("Email").value
+            //定义规则
+            var par1=/\w{8}@163|qq\.com/;
+            //通过规则去验证数据
+            if(par1.test(val1)){
+                return true;
+            }else {
+                //表示弹出一个对话框；
+                alert("用户邮箱输入有误，请重新输入");
+                return false;
+            }
+
+            //取出Telephone中输入的值
+            var val=document.getElementById("Telephone").value;
+            //定义规则  第一位 1 第二位 3,4,5,7,8,其他为是数字
+            var par=/^1[34578]\d{9}$/;
+            //通过规则去验证数据
+            if(par.test(val)){
+                return true;
+            }else {
+                //表示弹出一个对话框；
+                alert("手机号码有误，请重新填写");
+                return false;
+            }
+
+        }
+    </script>
+</head>
+<body>
+<h2>用户注册</h2>
+<form action="03jieshou.php" method="post" onsubmit="return checkform()">
+    <p>用户账号：<input type="text" name="Name" id="Name"/></p>
+    <p>用户密码：<input type="password" name="Password" id="Password"/></p>
+    <p>用户邮箱：<input type="email" name="Email" id="Email"/><br/><p>邮箱前缀只能输入8位字母、数字和下划线，域名只能是qq.com或163.com结尾</p></p>
+    <p>电话号码：<input type="text" name="Telephone" id="Telephone"/></p>
+    <p>用户性别：<input type="radio" name="Sex" value="男" />男  <input type="radio" name="Sex" value="女"/>女</p>
+    <p><input type="submit" value="提交/注册"/></p>
+</form>
+</body>
+</html>

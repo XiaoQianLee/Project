@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>编辑/修改新闻</h2>
+<form action="index.php?p=Admin&c=Admin&a=edit" method="post">
+    <input type="hidden" name="id" value="<?=$new[0]['new_id']?>"/>
+    <p>新闻标题：<input type="text" name="title" value="<?=$new[0]['title']?>"/></p>
+    <p>新闻作者：<input type="text" name="author" value="<?=$new[1]['author']?>"/></p>
+    <p>新闻内容：<textarea rows="6" cols="21" name="content"><?=$new[1]['content']?></textarea></p>
+    <p><input type="submit" value="提交/保存"/></p>
+</form>
+</body>
+</html>

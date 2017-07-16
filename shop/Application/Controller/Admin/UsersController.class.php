@@ -186,6 +186,7 @@ class UsersController extends PlatformController
         $results = $usersModel -> record($data);
         //分配数据到页面
         $this -> assign('record',$results['rows']);
+        //分页
         $page = new Page($results['count'], $results['pageSize'], $results['page'], "?p=Admin&c=Users&a=record&page={page}", 3);
         $page = $page->myde_write();
         $this->assign('page',$page);
